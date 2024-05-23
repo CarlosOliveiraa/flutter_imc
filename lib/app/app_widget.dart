@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'my_home_page.dart';
+import 'views/counter_view.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const CounterView(title: 'Flutter Demo Home Page'),
     );
   }
 }

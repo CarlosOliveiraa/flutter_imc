@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvc/app/controllers/counter_controller.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class CounterView extends StatefulWidget {
+  const CounterView({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<CounterView> createState() => _CounterViewState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _CounterViewState extends State<CounterView> {
+  final controller = CounterController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +28,18 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '${controller.model.counter}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          setState(() {
+            controller.incrementCounter();
+          });
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
